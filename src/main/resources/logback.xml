@@ -34,18 +34,8 @@
         </encoder>
     </appender>
 
-    <logger name="com.xinzhi.hospital.controller.app" additivity="true">
-        <level value="INFO"/>
-        <appender-ref ref="APPREPORT"/>
-    </logger>
-
-    <!--<logger name="com.xinzhi"  level="INFO" additivity="false"/>-->
     <root level="DEBUG">
-        <if condition='!property("soa.run.mode").equals("native")'>
-            <then>
-                <appender-ref ref="STDOUT"/>
-            </then>
-        </if>
+        <appender-ref ref="STDOUT"/>
         <appender-ref ref="DETAILFILE"/>
     </root>
 
