@@ -1,0 +1,3 @@
+http\://maple-springtag.dapeng.com/schema/maple=com.maple.mvc.namespace.MapleNamespaceHandler
+
+http\://www.dapeng.com/schema/bus=com.maple.mvc.namespace.MapleNamespaceHandler

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns="http://www.dapeng.com/schema/bus"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.dapeng.com/schema/bus"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <!--描述-->
+    <xsd:annotation>
+        <xsd:documentation>
+            <![CDATA[ Namespace support for the dapeng event-bus config with Spring Framework  provided by dapeng-soa framework. ]]></xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="producer">
+        <xsd:annotation>
+            <xsd:documentation source="java:com.today.-----------">
+                <![CDATA[event-bus config for the producer side .]]>
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:complexType>
+            <xsd:all minOccurs="0">
+                <!--kafka config -->
+                <xsd:element name="kafka-config" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            <![CDATA[event-bus kafka producer config. include kafka topic,kafka broker host,kafka transactions producer tid prefix.]]>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:attribute name="topic" type="xsd:string" use="required">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    <![CDATA[kafka topic .]]>
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:attribute name="kafka-host" type="xsd:string" use="required">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    <![CDATA[kafka broker host .]]>
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:attribute name="kafka-tid-prefix" type="xsd:string" use="required">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    <![CDATA[kafka transaction producer tid prefix,then we will joint a uuid with the prefix. ]]>
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+
+                <!--event bus poll thread config, include the service name for this project  -->
+                <xsd:element name="task-poll" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            <![CDATA[ event-bus polling thread for send message to kafka producer config . ]]>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:attribute name="data-source" type="xsd:string" use="required">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    <![CDATA[polling thread have a data-source config to call database]]>
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:attribute name="service-name" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    <![CDATA[ the polling thread which poll for the project name ]]>
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+
+                <!--biz-bus-bean -->
+                <xsd:element name="biz-bus-bean" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            <![CDATA[event-bus kafka producer config. include kafka topic,kafka broker host,kafka transactions producer tid prefix.]]>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:attribute name="class" type="xsd:string" use="required">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    <![CDATA[ current project eventbus for producer everything ,for the spring bean  ]]>
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+
+                        <xsd:attribute name="data-source" type="xsd:string" use="required">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    <![CDATA[polling thread have a data-source config to call database]]>
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:all>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--consumer-->
+    <xsd:element name="consumer">
+        <xsd:complexType>
+            <xsd:attribute name="enable" type="xsd:string" default="true"/>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

@@ -24,7 +24,7 @@ import java.util.List;
  */
 @RestController
 public class HelloController {
-    @Resource(name = "tx_h2_dataSource")
+//    @Resource(name = "tx_h2_dataSource")
     private DataSource dataSource;
 
     private Gson gson = new Gson();
