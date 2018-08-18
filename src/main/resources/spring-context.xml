@@ -128,9 +128,9 @@
     <tx:annotation-driven transaction-manager="h2TransactionManager"/>
 
     <!-- 初始化数据表结构 -->
-    <!--<jdbc:initialize-database data-source="h2_dataSource" ignore-failures="ALL">
+    <jdbc:initialize-database data-source="h2_dataSource" ignore-failures="ALL">
         <jdbc:script location="classpath:h2-sql/h2-init.sql" encoding="UTF-8"/>
-    </jdbc:initialize-database>-->
+    </jdbc:initialize-database>
     <!--===============================h2 DataSource end=============================-->
 
 
@@ -149,11 +149,11 @@
 
 
 
-        <bus:producer>
+      <!--  <bus:producer>
             <bus:kafka-config topic="${kafka_topic}" kafka-host="${kafka_producer_host}" kafka-tid-prefix="${kafka_tid_prefix}"/>
             <bus:task-poll data-source="h2_dataSource" service-name="com.maple.test.HelloService"/>
             <bus:biz-bus-bean class="com.maple.test.EventBus" data-source="tx_h2_dataSource"/>
-        </bus:producer>
+        </bus:producer>-->
 
     <!--<bus:consumer/>-->
 
