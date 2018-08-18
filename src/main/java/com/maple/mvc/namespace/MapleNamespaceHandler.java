@@ -3,7 +3,7 @@ package com.maple.mvc.namespace;
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 
 /**
- * desc: MapleNamespaceHandler
+ * desc: BusNamespaceHandler
  *
  * @author hz.lei
  * @since 2018年08月17日 上午12:13

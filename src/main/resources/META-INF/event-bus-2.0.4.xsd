@@ -1,10 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 <xsd:schema xmlns="http://www.dapeng.com/schema/bus"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://www.dapeng.com/schema/bus"
             elementFormDefault="qualified"
             attributeFormDefault="unqualified">
+
+
+    <xsd:import namespace="http://www.springframework.org/schema/beans"
+                schemaLocation="http://www.springframework.org/schema/beans/spring-beans-4.1.xsd"/>
+
 
     <!--描述-->
     <xsd:annotation>
@@ -110,7 +115,8 @@
     <!--consumer-->
     <xsd:element name="consumer">
         <xsd:complexType>
-            <xsd:attribute name="enable" type="xsd:string" default="true"/>
+            <xsd:attribute name="id" type="xsd:ID"/>
+            <xsd:attribute name="enable" type="xsd:boolean" default="true"/>
         </xsd:complexType>
     </xsd:element>
 

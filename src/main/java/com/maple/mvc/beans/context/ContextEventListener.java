@@ -32,8 +32,8 @@ public class ContextEventListener implements ApplicationContextAware, Applicatio
         provider.hello();
 
 
-        FactoryTestBean bean = applicationContext.getBean(FactoryTestBean.class);
-        bean.doGetBean();
+//        FactoryTestBean bean = applicationContext.getBean(FactoryTestBean.class);
+//        bean.doGetBean();
 
 
     }

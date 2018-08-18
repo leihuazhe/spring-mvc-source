@@ -93,44 +93,44 @@
 
     <!--dao-->
     <!--===============================h2 DataSource start=============================-->
-        <bean id="h2_dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
-              destroy-method="close">
-            <!--基本属性 url、user、password配置-->
-            <property name="driverClassName" value="org.h2.Driver"/>
-            <property name="url" value="${DB_H2DB_URL}"/>
-            <property name="username" value="${DB_H2DB_USER}"/>
-            <property name="password" value="${DB_H2DB_PASSWD}"/>
+    <bean id="h2_dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <!--基本属性 url、user、password配置-->
+        <property name="driverClassName" value="org.h2.Driver"/>
+        <property name="url" value="${DB_H2DB_URL}"/>
+        <property name="username" value="${DB_H2DB_USER}"/>
+        <property name="password" value="${DB_H2DB_PASSWD}"/>
 
-            <!--配置初始化大小、最小、最大-->
-            <property name="initialSize" value="1"/>
-            <property name="minIdle" value="1"/>
-            <property name="maxActive" value="50"/>
+        <!--配置初始化大小、最小、最大-->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="50"/>
 
-            <!--配置获取连接等待超时的时间-->
-            <property name="maxWait" value="10000"/>
+        <!--配置获取连接等待超时的时间-->
+        <property name="maxWait" value="10000"/>
 
-            <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-            <property name="minEvictableIdleTimeMillis" value="300000"/>
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
 
-            <property name="validationQuery" value="SELECT 'x'"/>
-            <property name="testWhileIdle" value="true"/>
-            <property name="testOnBorrow" value="false"/>
-            <property name="testOnReturn" value="false"/>
-        </bean>
+        <property name="validationQuery" value="SELECT 'x'"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+    </bean>
 
-        <bean id="tx_h2_dataSource" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
-            <constructor-arg ref="h2_dataSource"/>
-        </bean>
-        <bean id="h2TransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-            <property name="dataSource" ref="h2_dataSource"/>
-        </bean>
-        <!--开启事务控制的注解支持-->
-        <tx:annotation-driven transaction-manager="h2TransactionManager"/>
+    <bean id="tx_h2_dataSource" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
+        <constructor-arg ref="h2_dataSource"/>
+    </bean>
+    <bean id="h2TransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="h2_dataSource"/>
+    </bean>
+    <!--开启事务控制的注解支持-->
+    <tx:annotation-driven transaction-manager="h2TransactionManager"/>
 
-        <!-- 初始化数据表结构 -->
-        <!--<jdbc:initialize-database data-source="h2_dataSource" ignore-failures="ALL">
-            <jdbc:script location="classpath:h2-sql/h2-init.sql" encoding="UTF-8"/>
-        </jdbc:initialize-database>-->
+    <!-- 初始化数据表结构 -->
+    <!--<jdbc:initialize-database data-source="h2_dataSource" ignore-failures="ALL">
+        <jdbc:script location="classpath:h2-sql/h2-init.sql" encoding="UTF-8"/>
+    </jdbc:initialize-database>-->
     <!--===============================h2 DataSource end=============================-->
 
 
@@ -145,16 +145,17 @@
 
     <bean id="helloBike" class="com.maple.mvc.beans.replaced.HelloBike"/>
 
-    <maple:bean id="dlao" name="myBike" ref="helloBike"/>
+    <!--<maple:bean id="dlao" name="myBike" ref="helloBike"/>-->
 
 
-    <bus:consumer enable="true"/>
 
-    <bus:producer>
-        <bus:kafka-config topic="${kafka_topic}" kafka-host="${kafka_producer_host}" kafka-tid-prefix="${kafka_tid_prefix}"/>
-        <bus:task-poll data-source="h2_dataSource" service-name="com.maple.test.HelloService"/>
-        <bus:biz-bus-bean class="com.maple.test.EventBus" data-source="tx_h2_dataSource"/>
-    </bus:producer>
+        <bus:producer>
+            <bus:kafka-config topic="${kafka_topic}" kafka-host="${kafka_producer_host}" kafka-tid-prefix="${kafka_tid_prefix}"/>
+            <bus:task-poll data-source="h2_dataSource" service-name="com.maple.test.HelloService"/>
+            <bus:biz-bus-bean class="com.maple.test.EventBus" data-source="tx_h2_dataSource"/>
+        </bus:producer>
+
+    <!--<bus:consumer/>-->
 
 </beans>
 

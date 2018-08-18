@@ -8,7 +8,7 @@ import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
 
 /**
- * desc: MapleBeanDefinitionParser
+ * desc: ConsumerBeanDefinitionParser
  *
  * @author hz.lei
  * @since 2018年08月17日 上午12:15
