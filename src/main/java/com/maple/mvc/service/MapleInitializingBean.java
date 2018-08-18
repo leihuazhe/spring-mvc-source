@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @since 2018年08月08日 上午11:31
  */
 @Service
-public class MapleLifeCycle implements InitializingBean, ApplicationContextAware {
+public class MapleInitializingBean implements InitializingBean, ApplicationContextAware {
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("========>   afterPropertiesSet MapleLifeCycle");

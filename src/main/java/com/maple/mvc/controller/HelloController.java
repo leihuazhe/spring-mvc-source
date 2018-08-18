@@ -24,7 +24,7 @@ import java.util.List;
  */
 @RestController
 public class HelloController {
-//    @Resource(name = "tx_h2_dataSource")
+    @Resource(name = "tx_h2_dataSource")
     private DataSource dataSource;
 
     private Gson gson = new Gson();
@@ -40,8 +40,8 @@ public class HelloController {
         Connection conn = null;
         try {
             conn = dataSource.getConnection();
-            PreparedStatement prst = conn.prepareStatement("select * from test");
-            ResultSet rs = prst.executeQuery();
+            PreparedStatement pst = conn.prepareStatement("select * from test");
+            ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
