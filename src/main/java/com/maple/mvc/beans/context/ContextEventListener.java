@@ -1,7 +1,8 @@
 package com.maple.mvc.beans.context;
 
+import com.github.dapeng.org.apache.thrift.TException;
+import com.maple.eventbus.bus.EventBus;
 import com.maple.mvc.beans.lookup.BikeProvider;
-import com.maple.mvc.namespace.bean.FactoryTestBean;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -30,6 +31,8 @@ public class ContextEventListener implements ApplicationContextAware, Applicatio
         BikeProvider provider = applicationContext.getBean(BikeProvider.class);
 
         provider.hello();
+
+            EventBus.dispatchEvent("大佬！");
 
 
 //        FactoryTestBean bean = applicationContext.getBean(FactoryTestBean.class);

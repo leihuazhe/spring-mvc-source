@@ -2,8 +2,10 @@ package com.maple.mvc.namespace.bus;
 
 import com.today.eventbus.scheduler.MsgPublishTask;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
+import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
 import org.springframework.beans.factory.xml.AbstractBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.springframework.util.xml.DomUtils;
@@ -40,6 +42,14 @@ public class ProducerBeanDefinitionParser extends AbstractBeanDefinitionParser {
         builder.addPropertyValue("serviceName", serviceName);
         builder.setInitMethodName("startScheduled");
         builder.getRawBeanDefinition().setSource(parserContext.extractSource(element));
+
+        BeanDefinitionBuilder bizBeanBuilder = BeanDefinitionBuilder.genericBeanDefinition(bizBusBeanElement.getAttribute("class"));
+        bizBeanBuilder.setFactoryMethod("getInstance");
+        bizBeanBuilder.addPropertyReference("dataSource", bizBusBeanElement.getAttribute("data-source"));
+        BeanDefinitionHolder bizBeanBuilderHolder = new BeanDefinitionHolder(bizBeanBuilder.getBeanDefinition(), "bizEventBus", null);
+        BeanDefinitionReaderUtils.registerBeanDefinition(bizBeanBuilderHolder, parserContext.getRegistry());
+
+
         return builder.getBeanDefinition();
     }
 

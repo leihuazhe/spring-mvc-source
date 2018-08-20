@@ -148,14 +148,16 @@
     <!--<maple:bean id="dlao" name="myBike" ref="helloBike"/>-->
 
 
-
-     <!--   <bus:producer>
-            <bus:kafka-config topic="${kafka_topic}" kafka-host="${kafka_producer_host}" kafka-tid-prefix="${kafka_tid_prefix}"/>
-            <bus:task-poll data-source="h2_dataSource" service-name="com.maple.test.HelloService"/>
-            <bus:biz-bus-bean class="com.maple.test.EventBus" data-source="tx_h2_dataSource"/>
-        </bus:producer>-->
+    <bus:producer>
+        <bus:kafka-config topic="${kafka_topic}" kafka-host="${kafka_producer_host}"
+                          kafka-tid-prefix="${kafka_tid_prefix}"/>
+        <bus:task-poll data-source="h2_dataSource" service-name="com.maple.test.HelloService"/>
+        <bus:biz-bus-bean class="com.maple.eventbus.bus.EventBus" data-source="tx_h2_dataSource"/>
+    </bus:producer>
 
     <!--<bus:consumer/>-->
+    
+
 
 </beans>
 
