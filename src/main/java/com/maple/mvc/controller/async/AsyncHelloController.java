@@ -14,7 +14,7 @@ import java.util.concurrent.Callable;
  * @since 2018年08月20日 上午10:02
  */
 //@RestController
-@Async
+//@Async
 public class AsyncHelloController {
 
 //    @RequestMapping("/async")

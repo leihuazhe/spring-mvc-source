@@ -1,14 +1,10 @@
 package com.maple.mvc;
 
-import org.springframework.core.annotation.AnnotationAwareOrderComparator;
-import org.springframework.web.WebApplicationInitializer;
+import com.maple.mvc.filter.CharacterEncodingFilter;
 
 import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import java.lang.reflect.Modifier;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,7 +20,11 @@ public class ServletApplicationInitializer implements ServletContainerInitialize
     public void onStartup(Set<Class<?>> webAppInitializerClasses, ServletContext servletContext)
             throws ServletException {
 
+
+        servletContext.addFilter("characterEncodingFilter", CharacterEncodingFilter.class);
+
         servletContext.log("Maple Spring WebApplicationInitializers detected on classpath");
+
     }
 
 }
