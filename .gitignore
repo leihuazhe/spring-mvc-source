@@ -4,3 +4,4 @@ logs/
 target/
 test-spring-mvc.iml
 .DS_Store
+h2/
