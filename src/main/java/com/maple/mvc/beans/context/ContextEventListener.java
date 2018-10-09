@@ -17,7 +17,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
  * @author hz.lei
  * @since 2018年08月16日 下午11:43
  */
-@MvcBean
+//@MvcBean
 public class ContextEventListener implements ApplicationContextAware, ApplicationListener<ContextRefreshedEvent> {
     private ApplicationContext applicationContext;
 
@@ -32,7 +32,7 @@ public class ContextEventListener implements ApplicationContextAware, Applicatio
 
         provider.hello();
 
-            EventBus.dispatchEvent("大佬！");
+//            EventBus.dispatchEvent("大佬！");
 
 
 //        FactoryTestBean bean = applicationContext.getBean(FactoryTestBean.class);

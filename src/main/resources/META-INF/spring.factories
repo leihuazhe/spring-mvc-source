@@ -1,0 +1,6 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.maple.mvc.initializer.AfterHelloWorldApplicationContextInitializer,\
+com.maple.mvc.initializer.HelloWorldApplicationContextInitializer
+
+org.springframework.context.ApplicationListener=\
+com.maple.mvc.beans.context.ContextEventListener
