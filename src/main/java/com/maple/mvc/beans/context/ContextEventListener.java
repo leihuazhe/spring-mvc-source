@@ -1,7 +1,5 @@
 package com.maple.mvc.beans.context;
 
-import com.github.dapeng.org.apache.thrift.TException;
-import com.maple.eventbus.bus.EventBus;
 import com.maple.mvc.beans.lookup.BikeProvider;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

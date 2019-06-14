@@ -30,4 +30,10 @@ public class ExController {
         List<String> list = 4 % id == 0 ? null : Arrays.asList("a", "b", "c", "d");
         return list.get(id);
     }
+
+    @SafeVarargs
+    public final <T> T[] of(T... args) {
+        return args;
+    }
+
 }
