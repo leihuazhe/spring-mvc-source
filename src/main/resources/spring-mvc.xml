@@ -18,4 +18,6 @@
     <context:component-scan base-package="com.maple.mvc.beans.context">
         <context:include-filter type="annotation" expression="com.maple.mvc.beans.context.MvcBean"/>
     </context:component-scan>
+
+    <aop:aspectj-autoproxy/>
 </beans:beans>

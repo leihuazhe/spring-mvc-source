@@ -1,4 +1,4 @@
-package com.maple.mvc.controller;
+package com.maple.controller;
 
 import com.google.gson.Gson;
 import com.maple.mvc.entity.TestBean;
